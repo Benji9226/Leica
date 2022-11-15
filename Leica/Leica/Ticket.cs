@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Leica
 {
-    internal class Ticket
+    public class Ticket
     {
+        
     }
 }
