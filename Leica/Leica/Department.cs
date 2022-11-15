@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Leica
 {
-    internal class Department
+    public class Department
     {
+        public string Name { get; set; }
+
+        public Department(string name)
+        {
+            Name = name;
+        }   
     }
 }
