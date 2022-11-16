@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leica
+namespace Leica.Domain
 {
-    internal class DepartmentRepo
+    internal class Employee
     {
     }
 }

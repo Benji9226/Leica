@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leica
+namespace Leica.Domain
 {
     public class Department
     {
@@ -13,6 +13,6 @@ namespace Leica
         public Department(string name)
         {
             Name = name;
-        }   
+        }
     }
 }

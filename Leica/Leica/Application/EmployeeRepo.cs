@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leica
+namespace Leica.Application
 {
-    internal class Employee
+    internal class EmployeeRepo
     {
     }
 }

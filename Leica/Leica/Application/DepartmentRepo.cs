@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leica
+namespace Leica.Application
 {
-    public class Ticket
+    internal class DepartmentRepo
     {
-        
     }
 }
