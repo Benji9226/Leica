@@ -10,7 +10,6 @@ namespace Leica.Domain
     {
         public Leader(string name, string email, int password) : base(name, email, 0, password)
         {
-            
         }
 
         public override string ToString()
