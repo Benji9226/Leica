@@ -4,9 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leica.Domain
+namespace Leica.Domain 
 {
-    internal class Leader
+    public class Leader : Position
     {
+        public Leader(string name, string email, int password) : base(name, email, 0, password)
+        {
+            
+        }
+
+        public override string ToString()
+        {
+            return Name + ";" + Email + ";" + Password;
+        }
     }
 }
