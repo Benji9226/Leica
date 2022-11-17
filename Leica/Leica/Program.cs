@@ -14,12 +14,17 @@ namespace Leica
 
         static void RunApp()
         {
+            //Hardcoded
+            LeaderRepo repo = new LeaderRepo();
+            Leader leader1 = new Leader("Benjamin", "benjamin@gmail.com", 0);
+            Leader leader2 = new Leader("Vuong", "vuong@gmail.com", 1);
+            repo.AddLeader(leader1);
+            repo.AddLeader(leader2);
+
             Console.WriteLine("Leica menu");
             Console.WriteLine("1. Login");
             Console.WriteLine("2. exit");
             MenuChoice();
-            
-
         }
 
         static void MenuChoice()
@@ -48,31 +53,39 @@ namespace Leica
 
         static void LoginCheck(string email, int password)
         {
-            using(StreamReader sr = new StreamReader("Leaders.txt"))
+            if (File.Exists("Leaders.txt"))
             {
-                string controlEmail = "";
-                int controlPassword = 0;
-                while (!sr.EndOfStream)
+                using (StreamReader sr = new StreamReader("Leaders.txt"))
                 {
-                    string tempString = sr.ReadLine();
-                    string[] tempArray = tempString.Split(';');
-                    controlEmail = tempArray[1];
-                    controlPassword = int.Parse(tempArray[2]);
-
-                    if (controlEmail == email && password == controlPassword)
+                    string controlEmail = "";
+                    int controlPassword = 0;
+                    while (!sr.EndOfStream)
                     {
-                        Console.WriteLine("Hurra! THIS WAS AN ACTUAL ACCOUNT");
+                        string tempString = sr.ReadLine();
+                        string[] tempArray = tempString.Split(';');
+                        controlEmail = tempArray[1];
+                        controlPassword = int.Parse(tempArray[2]);
 
-                        break;
+                        if (controlEmail == email && password == controlPassword)
+                        {
+                            Console.WriteLine("Hurra! THIS WAS AN ACTUAL ACCOUNT");
+
+                            break;
+                        }
+                    }
+
+                    if (controlEmail != email || controlPassword != password)
+                    {
+                        Console.WriteLine("Email or password are incorrect");
                     }
                 }
-
-                if (controlEmail != email || controlPassword != password)
-                {
-                    Console.WriteLine("Email or password are incorrect");
-                }
             }
-           
+            else
+            {
+                LeaderRepo tempRepo = new LeaderRepo();
+                tempRepo.AddLeadersToFile(tempRepo.leaderList);
+                Console.WriteLine("Printing leaderlist to file... Relaunch and try again.");
+            }
         }
         
     }
