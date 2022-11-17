@@ -30,7 +30,7 @@ namespace Leica.UI
 
                         if (login)
                         {
-                            Console.WriteLine("The worker exists. PRESS ENTER TO EXIT");
+                            HRMenu();
                             break;
                         }
 
@@ -51,6 +51,7 @@ namespace Leica.UI
 
         public void HRMenu()
         {
+            Console.Clear();
             Console.WriteLine("HELLO {insert name here} LIST OF WORKERS ASSIGNED TO YOU:");
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------");
