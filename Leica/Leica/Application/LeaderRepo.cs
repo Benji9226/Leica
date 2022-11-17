@@ -9,7 +9,7 @@ namespace Leica.Application
 {
     public class LeaderRepo
     {
-        List<Leader> leaderList = new List<Leader>();
+        private List<Leader> leaderList = new List<Leader>();
 
 
         public void AddLeader(Leader leader) 
