@@ -60,8 +60,53 @@ namespace Leica.UI
             Console.WriteLine("3. V EFTERNAVN   -   Software Department     -   vuong@gmail.com");
             Console.WriteLine("4. V EFTERNAVN   -   Reception Department    -   valdemar@gmail.com");
             Console.WriteLine("5. C EFTERNAVN   -   BeerBar Department      -   christoffer@gmail.com");
+
+            int.TryParse(Console.ReadLine(), out int EmployeeChoice);
+
+            switch (EmployeeChoice)
+            {
+                case 1:
+                    ShowChecklist();
+                    break;
+                case 2:
+                    ShowChecklist();
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                default:
+
+                    break;
+            }
+
         }
 
+        public void ShowChecklist()
+        {
+            
+
+            Console.Clear();
+            Console.WriteLine("Activities: ");
+            Console.WriteLine();
+            Console.WriteLine("1. [DONE] Base data created") ;
+            Console.WriteLine("2. [NOT DONE] HM registered of IT equipment");
+            Console.WriteLine("3. [DONE] Order is created");
+            Console.WriteLine("4. [NOT DONE] Onboarding Plan (Miro) finalised");
+            Console.WriteLine("5. [DONE] Data to mail template");
+            Console.WriteLine("Choose an activity to change status: ");
+            int.TryParse(Console.ReadLine(), out int choice);
+            
+            
+
+        }
+
+   
         public bool LoginCheck(string email, int password)
         {
             if (File.Exists("Leaders.txt"))
