@@ -1,4 +1,5 @@
 ﻿using Leica.Application;
+using Leica.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,8 +69,8 @@ namespace Leica.UI
                 case 1:
                     Console.Clear();
                     EmployeeRepo employeeRepo = new EmployeeRepo();
-                    Console.WriteLine(employeeRepo.GetAll().ElementAt(0).Name);
-                    ShowChecklist();
+                    Console.WriteLine(employeeRepo.GetAll().ElementAt(0).Name + "'s ONBOARDING PROCESS:");
+                    ShowChecklist(employeeRepo.GetAll().ElementAt(0));
                     break;
 
                 case 2:
@@ -89,21 +90,12 @@ namespace Leica.UI
             }
         }
 
-        public void ShowChecklist()
+        public void ShowChecklist(Employee currentEmployee)
         {
-            Console.WriteLine("Activities: ");
             Console.WriteLine();
-            Console.WriteLine("1. [DONE] Base data created");
-            Console.WriteLine("2. [NOT DONE] HM registered of IT equipment");
-            Console.WriteLine("3. [DONE] Order is created");
-            Console.WriteLine("4. [NOT DONE] Onboarding Plan (Miro) finalised");
-            Console.WriteLine("5. [DONE] Data to mail template");
-            Console.WriteLine("6. [Done] Sent intro email");
-            Console.WriteLine("Choose an activity to change status: ");
+            currentEmployee.Checklist();
             int.TryParse(Console.ReadLine(), out int choice);
-
         }
-
    
         public bool LoginCheck(string email, int password)
         {

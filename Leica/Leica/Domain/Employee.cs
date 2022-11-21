@@ -13,6 +13,12 @@ namespace Leica.Domain
         {
         }
 
+        public void Checklist()
+        {
+            Checklist checklist = new Checklist();
+            checklist.show();
+        }
+
         public override string ToString()
         {
             return Name + ";" + Email + ";" + Number;
