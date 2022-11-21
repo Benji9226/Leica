@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Leica.Domain;
+using Leica.Domain; 
 using Leica.UI;
 using Leica.Application;
 
@@ -17,20 +17,24 @@ namespace Leica.Application
 
         public Controller()
         {
-            InitializeController();
+            // maybe this? : InitializeController();
         }
 
         public void InitializeController()
         {
-            //Hardcoded
-            Leader leader1 = new Leader("Benjamin", "benjamin@gmail.com", 0);
-            Leader leader2 = new Leader("Vuong", "vuong@gmail.com", 1);
-            leaderRepo.AddLeader(leader1);
-            leaderRepo.AddLeader(leader2);
-           
-            employeeRepo.Add("Philip", "email@email", 40509288);
-            employeeRepo.Add("Oliver", "email@email", 40509288);
-            //Hardcoded end
+            // something perhaps here?
+        }
+
+        public void CreateEmployee(string name, string email, int number)
+        {
+            employeeRepo.Add(name, email, number);
+            employeeRepo.AddEmployeesToFile(employeeRepo.GetAll());
+        }
+
+        public void CreateLeader(string name, string email, int password)
+        {
+            leaderRepo.Add(name, email, password);
+            leaderRepo.AddLeadersToFile(leaderRepo.GetAll());
         }
 
         public void PrintEmployees()

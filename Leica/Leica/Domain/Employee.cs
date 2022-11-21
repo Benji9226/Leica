@@ -7,24 +7,10 @@ using System.Xml.Linq;
 
 namespace Leica.Domain
 {
-    public class Employee
+    public class Employee : Position
     {
-        Checklist checklist = new Checklist();
-
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public int Number { get; set; }
-
-        public Employee(string name, string email, int number)
+        public Employee(string name, string email, int number) : base(name, email, number, 0)
         {
-            Name = name;
-            Email = email;
-            Number = number;
-        }
-
-        public void PrintChecklist()
-        {
-            checklist.QuestionOne();
         }
 
         public override string ToString()
