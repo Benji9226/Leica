@@ -13,11 +13,13 @@ namespace Leica
             Controller controller = new Controller();
             controller.InitializeController();
 
-            controller.CreateLeader("Benjamin", "benjamin@gmail.com", 0);
-            controller.CreateLeader("Vuong", "vuong@gmail.com", 1);
+            //Hardcode, only use if files not created
+            //controller.CreateLeader("Benjamin", "benjamin@gmail.com", 0);
+            //controller.CreateLeader("Vuong", "vuong@gmail.com", 1);
 
-            controller.CreateEmployee("Philip", "email@", 40509288);
-            controller.CreateEmployee("Oliver", "email@", 40509288);
+            //Hardcode, only use if files not created
+            //controller.CreateEmployee("Philip", "email@", 40509288);
+            //controller.CreateEmployee("Oliver", "email@", 40509288);
 
             controller.PrintMenu();
 

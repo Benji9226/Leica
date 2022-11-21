@@ -8,13 +8,21 @@ namespace Leica.Domain
 {
     public class Checklist
     {
-        public void show()
-        {
-            Console.WriteLine("1. [DONE] Base data created");
-            Console.WriteLine("2. [DONE] Base data created");
-            Console.WriteLine("3. [NOT DONE] Base data created");
-            Console.WriteLine("4. [NOT DONE] Base data created");
+        public bool Q1 { get; set; }
+        public bool Q2 { get; set; }
+        public bool Q3 { get; set; }
 
+        public Checklist()
+        {
+            Q1 = false;
+            Q2 = false;
+            Q3 = false;
+        }
+        public void ShowEmployeeChecklist()
+        {
+            Console.WriteLine("1. BASE DATA CREATED: " + Q1);
+            Console.WriteLine("2. SOFTWARE INTRODUCTION: " + Q2);
+            Console.WriteLine("3. COMMS INTRODUCTION: " + Q3);
         }
     }
 }
