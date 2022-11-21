@@ -13,50 +13,61 @@ namespace Leica.UI
     {
         EmployeeRepo employeeRepo = new EmployeeRepo();
 
+        /// <summary>
+        /// Prints the main menu and takes the user to further functionality if login is correct.
+        /// </summary>
         public void MainMenu()
         {
-            Console.Clear();
-            Console.WriteLine("Leica menu");
-            Console.WriteLine("1. Login");
-            Console.WriteLine("2. exit");
-
-            int.TryParse(Console.ReadLine(), out int choice);
-            switch (choice)
+            while (true)
             {
-                case 1:
-                    bool login = false;
-                    while (login == false)
-                    {
-                        Console.Clear();
-                        Console.Write("Enter Email: ");
-                        string emailInput = Console.ReadLine();
-                        Console.Write("\nEnter Password: ");
-                        int.TryParse(Console.ReadLine(), out int passwordInput);
-                        login = LoginCheck(emailInput, passwordInput);
+                Console.Clear();
+                Console.WriteLine("**********************");
+                Console.WriteLine("*        LEICA       *");
+                Console.WriteLine("* ONBOARDING PROGRAM *");
+                Console.WriteLine("*                    *");
+                Console.WriteLine("* 1. LOGIN           *");
+                Console.WriteLine("* 2. EXIT            *");
+                Console.WriteLine("**********************");
 
-                        if (login)
+                int.TryParse(Console.ReadLine(), out int choice);
+                switch (choice)
+                {
+                    case 1:
+                        bool login = false;
+                        while (login == false)
                         {
-                            HRMenu();
-                            break;
+                            Console.Clear();
+                            Console.Write("Enter Email: ");
+                            string emailInput = Console.ReadLine();
+                            Console.Write("\nEnter Password: ");
+                            int.TryParse(Console.ReadLine(), out int passwordInput);
+                            login = LoginCheck(emailInput, passwordInput);
+
+                            if (login)
+                            {
+                                EmployeeListMenu();
+                                break;
+                            }
+
+                            Console.WriteLine("Wrong email or password, try again:");
+                            Console.ReadLine();
                         }
+                        break;
 
-                        Console.WriteLine("Wrong email or password, try again:");
-                        Console.ReadLine();
-                    }
-                    break;
+                    case 2:
+                        Environment.Exit(0);
+                        break;
 
-                case 2:
-                    Console.WriteLine("Have a good day! :-) (press enter to shut down)");
-                    Console.ReadLine();
-                    Environment.Exit(0);
-                    break;
-
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
         }
 
-        public void HRMenu()
+        /// <summary>
+        /// Prints the list of onboardees and provides functionality for editing the checklist
+        /// </summary>
+        public void EmployeeListMenu()
         {
             int EmployeeChoice = 1;
             while (EmployeeChoice != 0)
@@ -77,7 +88,7 @@ namespace Leica.UI
         }
 
         /// <summary>
-        /// Helping method
+        /// Helping method for editing the checklist
         /// </summary>
         /// <param name="EmployeeChoice"></param>
         public void EmployeeChecklistEditor(int EmployeeChoice)
@@ -89,6 +100,9 @@ namespace Leica.UI
             {
                 Console.Clear();
                 Console.WriteLine(currentEmployee.Name + "'s ONBOARDING PROCESS, INPUT NR. TO CHANGE STATUS, INPUT 0 TO EXIT EMPLOYEE");
+                Console.WriteLine();
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine();
                 currentEmployee.Checklist();
                 userInput = int.Parse(Console.ReadLine());
                 if (userInput != 0)
@@ -99,13 +113,13 @@ namespace Leica.UI
         }
 
         /// <summary>
-        /// Helping method
+        /// Helping method that prints the list of onboardees.
         /// </summary>
         public void printOnboadees()
         {
             Console.Clear();
             Console.WriteLine("LIST OF ONBOARDEES");
-            Console.WriteLine("INPUT NR. TO SELECT EMPLOYEE");
+            Console.WriteLine("INPUT NR. TO SELECT EMPLOYEE OR 0 TO EXIT");
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine();
@@ -113,6 +127,12 @@ namespace Leica.UI
             Console.WriteLine("2. " + employeeRepo.GetAll().ElementAt(1).Name + " -   Software Department     -   " + employeeRepo.GetAll().ElementAt(1).Email);
         }
    
+        /// <summary>
+        /// Helping method that checks if the login credentials are valid and appart of the "Leaders.txt" file.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns>true or false</returns>
         public bool LoginCheck(string email, int password)
         {
             if (File.Exists("Leaders.txt"))
