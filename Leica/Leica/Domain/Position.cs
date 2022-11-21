@@ -19,11 +19,7 @@ namespace Leica.Domain
             Email = email;
             Number = number;
             Password = password;
-
         }
-
     }
-
-
 }
 

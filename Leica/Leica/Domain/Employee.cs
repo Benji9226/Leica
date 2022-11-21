@@ -3,13 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Leica.Domain
 {
-    internal class Employee : Position
+    public class Employee
     {
-        public Employee(string name, string email, int number) : base(name, email, number, 0)
+        Checklist checklist = new Checklist();
+
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int Number { get; set; }
+
+        public Employee(string name, string email, int number)
         {
+            Name = name;
+            Email = email;
+            Number = number;
+        }
+
+        public void PrintChecklist()
+        {
+            checklist.QuestionOne();
+        }
+
+        public override string ToString()
+        {
+            return Name + ";" + Email + ";" + Number;
         }
     }
 }

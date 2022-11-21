@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leica.Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,7 +66,7 @@ namespace Leica.UI
             switch (EmployeeChoice)
             {
                 case 1:
-                    ShowChecklist();
+                    
                     break;
                 case 2:
                     ShowChecklist();
@@ -90,7 +91,7 @@ namespace Leica.UI
             Console.Clear();
             Console.WriteLine("Activities: ");
             Console.WriteLine();
-            Console.WriteLine("1. [DONE] Base data created") ;
+            Console.WriteLine("1. [DONE] Base data created");
             Console.WriteLine("2. [NOT DONE] HM registered of IT equipment");
             Console.WriteLine("3. [DONE] Order is created");
             Console.WriteLine("4. [NOT DONE] Onboarding Plan (Miro) finalised");
