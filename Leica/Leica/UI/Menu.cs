@@ -59,7 +59,7 @@ namespace Leica.UI
             Console.WriteLine("2. B EFTERNAVN   -   Software Department     -   benjamin@gmail.com");
             Console.WriteLine("3. V EFTERNAVN   -   Software Department     -   vuong@gmail.com");
             Console.WriteLine("4. V EFTERNAVN   -   Reception Department    -   valdemar@gmail.com");
-            Console.WriteLine("5. C EFTERNAVN   -   BeerBar Department      -   christoffer@gmail.com");
+            Console.WriteLine("5. C EFTERNAVN   -   Reception Department    -   christoffer@gmail.com");
         }
 
         public bool LoginCheck(string email, int password)
