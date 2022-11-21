@@ -97,7 +97,7 @@ namespace Leica.UI
             Console.WriteLine("3. [DONE] Order is created");
             Console.WriteLine("4. [NOT DONE] Onboarding Plan (Miro) finalised");
             Console.WriteLine("5. [DONE] Data to mail template");
-            Console.WriteLine("6. [Done] Sent email");
+            Console.WriteLine("6. [Done] Sent intro email");
             Console.WriteLine("Choose an activity to change status: ");
             int.TryParse(Console.ReadLine(), out int choice);
 
