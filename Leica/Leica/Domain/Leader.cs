@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Leica.Domain 
 {
-    public class Leader : Position
+    public class Leader
     {
-        public Leader(string name, string email, int password) : base(name, email, 0, password)
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int Password { get; set; }
+
+        public Leader(string name, string email, int password)
         {
+            Name = name;
+            Email = email;
+            Password = password;
         }
 
         public override string ToString()

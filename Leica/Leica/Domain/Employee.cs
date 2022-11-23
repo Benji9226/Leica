@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Leica.Domain
 {
-    internal class Employee : Position
+    public class Employee
     {
-        public Employee(string name, string email, int number) : base(name, email, number, 0)
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int PhoneNumber { get; set; }
+
+        public Employee(string name, string email, int phoneNumber)
         {
+            Name = name;
+            Email = email;
+            PhoneNumber = phoneNumber;
         }
     }
 }
