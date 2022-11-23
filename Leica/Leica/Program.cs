@@ -25,7 +25,7 @@ namespace Leica
             //Hardcoded Employee
             EmployeeRepo repoEm = new EmployeeRepo();
             Employee Employee1 = new Employee("Benjamin", "benjamin@gmail.com", 42445203);
-            Employee Employee2 = new Employee("Vuong", "vuong@gmail.com", 99998888);
+            Employee Employee2 = new Employee("Vuong", "vuong@gmail.com", 9);
             repoEm.AddEmployee(Employee1);
             repoEm.AddEmployee(Employee2);
             //Hardcoded end
