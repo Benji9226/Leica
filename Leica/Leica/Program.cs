@@ -17,6 +17,11 @@ namespace Leica
             //Hardcoded FILE MUST EXISTS WITH ATLEAST 1 USER
                 LeaderRepo leaderRepo = new LeaderRepo();
                 leaderRepo.InitializeRepository();
+
+            EmployeeRepo employeeRepo = new EmployeeRepo();
+            
+            employeeRepo.Add("Vuongvuongsen", "vuong@gmail.com", 555);
+            employeeRepo.AddEmployeeToFile(employeeRepo.GetAll());
             //Hardcoded end
 
             Menu menu = new Menu();

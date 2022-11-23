@@ -115,29 +115,6 @@ namespace Leica.UI
                         return true;
                     }
                 }
-
-                //using (StreamReader sr = new StreamReader("Leaders.txt"))
-                //{
-                //    string controlEmail = "";
-                //    int controlPassword = 0;
-                //    while (!sr.EndOfStream)
-                //    {
-                //        string tempString = sr.ReadLine();
-                //        string[] tempArray = tempString.Split(';');
-                //        controlEmail = tempArray[1];
-                //        controlPassword = int.Parse(tempArray[2]);
-
-                //        if (controlEmail == email && password == controlPassword)
-                //        {
-                //            return true;
-                //        }
-                //    }
-
-                //    if (controlEmail != email || controlPassword != password)
-                //    {
-                //        return false;
-                //    }
-                //}
             }
             return false;
         }
