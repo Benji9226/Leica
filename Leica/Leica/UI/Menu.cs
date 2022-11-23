@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Leica.Application;
+using Leica.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -105,28 +107,37 @@ namespace Leica.UI
         {
             if (File.Exists("Leaders.txt"))
             {
-                using (StreamReader sr = new StreamReader("Leaders.txt"))
+                LeaderRepo leaderRepo = new LeaderRepo();
+                foreach (Leader leader in leaderRepo.leaderList)
                 {
-                    string controlEmail = "";
-                    int controlPassword = 0;
-                    while (!sr.EndOfStream)
+                    if (email.Equals(leader.Email) && password.Equals(leader.Password))
                     {
-                        string tempString = sr.ReadLine();
-                        string[] tempArray = tempString.Split(';');
-                        controlEmail = tempArray[1];
-                        controlPassword = int.Parse(tempArray[2]);
-
-                        if (controlEmail == email && password == controlPassword)
-                        {
-                            return true;
-                        }
-                    }
-
-                    if (controlEmail != email || controlPassword != password)
-                    {
-                        return false;
+                        return true;
                     }
                 }
+
+                //using (StreamReader sr = new StreamReader("Leaders.txt"))
+                //{
+                //    string controlEmail = "";
+                //    int controlPassword = 0;
+                //    while (!sr.EndOfStream)
+                //    {
+                //        string tempString = sr.ReadLine();
+                //        string[] tempArray = tempString.Split(';');
+                //        controlEmail = tempArray[1];
+                //        controlPassword = int.Parse(tempArray[2]);
+
+                //        if (controlEmail == email && password == controlPassword)
+                //        {
+                //            return true;
+                //        }
+                //    }
+
+                //    if (controlEmail != email || controlPassword != password)
+                //    {
+                //        return false;
+                //    }
+                //}
             }
             return false;
         }

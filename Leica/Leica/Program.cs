@@ -14,14 +14,9 @@ namespace Leica
 
         static void RunApp()
         {
-            //Hardcoded
-                LeaderRepo repo = new LeaderRepo();
-                //repo.Add("Benjamin", "benjamin@gmail.com", 0);
-                //repo.Add("Vuong", "vuong@gmail.com", 0);
-                if (!File.Exists("Leaders.txt"))
-                {
-                    repo.AddLeadersToFile(repo.GetAll());
-                }
+            //Hardcoded FILE MUST EXISTS WITH ATLEAST 1 USER
+                LeaderRepo leaderRepo = new LeaderRepo();
+                leaderRepo.InitializeRepository();
             //Hardcoded end
 
             Menu menu = new Menu();

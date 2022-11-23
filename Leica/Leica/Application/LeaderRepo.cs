@@ -11,6 +11,36 @@ namespace Leica.Application
     {
         public List<Leader> leaderList = new List<Leader>();
 
+        public LeaderRepo()
+        {
+            InitializeRepository();
+        }
+
+        public void InitializeRepository()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("Leaders.txt"))
+                {
+                    String line = sr.ReadLine();
+
+                    while (line != null)
+                    {
+                        string[] parts = line.Split(';');
+
+                        Leader tempLeader = new Leader(parts[0], parts[1], int.Parse(parts[2]));
+                        leaderList.Add(tempLeader);
+
+                        line = sr.ReadLine();
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+        }
+
         public Leader Add(string name, string email, int password)
         {
             Leader result = null;
