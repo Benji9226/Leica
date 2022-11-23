@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Leica.Domain
 {
-    internal class Employee : Position
+    public class Employee : Position
     {
         public Employee(string name, string email, int number) : base(name, email, number, 0)
         {
         }
+        public override string ToString()
+        {
+            return Name + ";" + Email + ";" + Number;
+        }
+
     }
 }
