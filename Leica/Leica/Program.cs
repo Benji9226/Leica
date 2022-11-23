@@ -20,9 +20,11 @@ namespace Leica
 
             EmployeeRepo employeeRepo = new EmployeeRepo();
             
-            employeeRepo.Add("Vuongvuongsen", "vuong@gmail.com", 555);
-            employeeRepo.AddEmployeeToFile(employeeRepo.GetAll());
+                employeeRepo.InitializeRepository();
+            //employeeRepo.Add("Vuongvuongsen", "vuong@gmail.com", 555);
+           // employeeRepo.AddEmployeesToFile();
             //Hardcoded end
+
 
             Menu menu = new Menu();
             menu.MainMenu();

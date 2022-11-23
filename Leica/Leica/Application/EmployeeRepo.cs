@@ -60,13 +60,13 @@ namespace Leica.Application
             return employeeList;
         }
 
-        public void AddEmployeeToFile(List<Employee> employees)
+        public void AddEmployeesToFile()
         {
             using (StreamWriter fileWriter = new StreamWriter("Employee.txt"))
             {
                 foreach (Employee employee in employeeList)
                 {
-                    fileWriter.WriteLine(employees.ToString());
+                    fileWriter.WriteLine(employee.ToString());
                 }
             }
         }

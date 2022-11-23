@@ -60,7 +60,7 @@ namespace Leica.Application
             return leaderList;
         }
 
-        public void AddLeadersToFile(List<Leader> leaderList)
+        public void AddLeadersToFile()
         {
             using (StreamWriter fileWriter = new StreamWriter("Leaders.txt"))
             {
