@@ -16,10 +16,12 @@ namespace Leica
         {
             //Hardcoded
                 LeaderRepo repo = new LeaderRepo();
-                Leader leader1 = new Leader("Benjamin", "benjamin@gmail.com", 0);
-                Leader leader2 = new Leader("Vuong", "vuong@gmail.com", 1);
-                repo.AddLeader(leader1);
-                repo.AddLeader(leader2);
+                //repo.Add("Benjamin", "benjamin@gmail.com", 0);
+                //repo.Add("Vuong", "vuong@gmail.com", 0);
+                if (!File.Exists("Leaders.txt"))
+                {
+                    repo.AddLeadersToFile(repo.GetAll());
+                }
             //Hardcoded end
 
             Menu menu = new Menu();

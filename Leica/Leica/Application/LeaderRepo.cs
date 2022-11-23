@@ -11,16 +11,25 @@ namespace Leica.Application
     {
         public List<Leader> leaderList = new List<Leader>();
 
-        public void AddLeader(Leader leader) 
+        public Leader Add(string name, string email, int password)
         {
-            leaderList.Add(leader);
-            AddLeadersToFile(leaderList);
+            Leader result = null;
+
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email))
+            {
+                result = new Leader(name, email, password);
+                leaderList.Add(result);
+            }
+            else
+                throw (new ArgumentException("Not all arguments are valid."));
+            return result;
         }
 
-        /// <summary>
-        /// Helping method
-        /// </summary>
-        /// <param name="leaderList"></param>
+        public List<Leader> GetAll()
+        {
+            return leaderList;
+        }
+
         public void AddLeadersToFile(List<Leader> leaderList)
         {
             using (StreamWriter fileWriter = new StreamWriter("Leaders.txt"))

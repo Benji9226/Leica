@@ -100,7 +100,6 @@ namespace Leica.UI
             int.TryParse(Console.ReadLine(), out int choice);
 
         }
-
    
         public bool LoginCheck(string email, int password)
         {
