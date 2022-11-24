@@ -10,44 +10,17 @@ namespace Leica.UI
 {
     public class Menu
     {
+        Controller controller = new Controller();
+
         public void MainMenu()
         {
             Console.WriteLine("Leica menu");
             Console.WriteLine("1. Login");
             Console.WriteLine("2. exit");
 
-            int.TryParse(Console.ReadLine(), out int choice);
-            Console.Clear();
-            switch (choice)
+            if(controller.Login())
             {
-                case 1:
-                    bool login = false;
-                    while (login == false)
-                    {
-                        Console.Write("Enter Email: ");
-                        string emailInput = Console.ReadLine();
-                        Console.Write("\nEnter Password: ");
-                        int.TryParse(Console.ReadLine(), out int passwordInput);
-                        login = LoginCheck(emailInput, passwordInput);
-
-                        if (login)
-                        {
-                            HRMenu();
-                            break;
-                        }
-
-                        Console.WriteLine("Wrong email or password, try again:");
-                        Console.ReadLine();
-                        Console.Clear();
-                    }
-                    break;
-                case 2:
-                    Console.WriteLine("Have a good day! :-) (press enter to shut down)");
-                    Console.ReadLine();
-                    Environment.Exit(0);
-                    break;
-                default:
-                    break;
+                HRMenu();
             }
         }
 
@@ -62,29 +35,6 @@ namespace Leica.UI
             Console.WriteLine("3. V EFTERNAVN   -   Software Department     -   vuong@gmail.com");
             Console.WriteLine("4. V EFTERNAVN   -   Reception Department    -   valdemar@gmail.com");
             Console.WriteLine("5. C EFTERNAVN   -   Reception Department    -   christoffer@gmail.com");
-            int.TryParse(Console.ReadLine(), out int EmployeeChoice);
-
-            switch (EmployeeChoice)
-            {
-                case 1:
-                    ShowChecklist();
-                    break;
-                case 2:
-                    ShowChecklist();
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-                case 5:
-
-                    break;
-                default:
-
-                    break;
-            }
         }
 
         public void ShowChecklist()
@@ -100,23 +50,6 @@ namespace Leica.UI
             Console.WriteLine("6. [Done] Sent intro email");
             Console.WriteLine("Choose an activity to change status: ");
             int.TryParse(Console.ReadLine(), out int choice);
-
-        }
-   
-        public bool LoginCheck(string email, int password)
-        {
-            if (File.Exists("Leaders.txt"))
-            {
-                LeaderRepo leaderRepo = new LeaderRepo();
-                foreach (Leader leader in leaderRepo.leaderList)
-                {
-                    if (email.Equals(leader.Email) && password.Equals(leader.Password))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
     }
 }

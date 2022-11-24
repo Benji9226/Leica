@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Leica.Application
 {
-    internal class DepartmentRepo
+    public class DepartmentRepo
     {
+
     }
 }

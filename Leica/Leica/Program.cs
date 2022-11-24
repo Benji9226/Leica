@@ -15,15 +15,16 @@ namespace Leica
         static void RunApp()
         {
             //Hardcoded FILE MUST EXISTS WITH ATLEAST 1 USER
-                LeaderRepo leaderRepo = new LeaderRepo();
-                leaderRepo.InitializeRepository();
+            LeaderRepo leaderRepo = new LeaderRepo();
+            leaderRepo.InitializeRepository();
 
             EmployeeRepo employeeRepo = new EmployeeRepo();
-            
-                employeeRepo.InitializeRepository();
+
+            employeeRepo.InitializeRepository();
             //employeeRepo.Add("Vuongvuongsen", "vuong@gmail.com", 555);
-           // employeeRepo.AddEmployeesToFile();
+            //employeeRepo.AddEmployeesToFile();
             //Hardcoded end
+
 
 
             Menu menu = new Menu();
