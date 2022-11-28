@@ -27,14 +27,15 @@ namespace Leica.UI
         public void HRMenu()
         {
             Console.Clear();
-            Console.WriteLine("HELLO {insert name here} HERE IS A LIST OF ONBOARDEES:");
+            Console.WriteLine("LIST OF ONBOARDEES:");
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("1. P NAGEL       -   Software Department     -   philip.v.nagel@gmail.com");
-            Console.WriteLine("2. B EFTERNAVN   -   Software Department     -   benjamin@gmail.com");
-            Console.WriteLine("3. V EFTERNAVN   -   Software Department     -   vuong@gmail.com");
-            Console.WriteLine("4. V EFTERNAVN   -   Reception Department    -   valdemar@gmail.com");
-            Console.WriteLine("5. C EFTERNAVN   -   Reception Department    -   christoffer@gmail.com");
+
+            controller.EmployeeList();
+
+            controller.EmployeeChoice();
+
+            ShowChecklist();
         }
 
         public void ShowChecklist()

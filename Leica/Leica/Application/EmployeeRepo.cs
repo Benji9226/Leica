@@ -71,6 +71,5 @@ namespace Leica.Application
             }
         }
     }
-
 }
 

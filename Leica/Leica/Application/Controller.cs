@@ -2,6 +2,7 @@
 using Leica.UI;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Leica.Application
 {
     internal class Controller
     {
+        EmployeeRepo employeeRepo = new EmployeeRepo();
+
         public bool Login()
         {
             Menu menu = new Menu();
@@ -63,28 +66,24 @@ namespace Leica.Application
             }
             return false;
         }
+        public void EmployeeList()
+        {
+            List<Employee> employeeList = employeeRepo.GetAll();
+            int employeeCount = 1;
 
-
-
+            foreach(Employee e in employeeList)
+            {
+                Console.WriteLine($"{employeeCount}:  {e.Name}   ~   {e.Email}");
+                employeeCount++;
+            }
+        }
         public void EmployeeChoice()
         {
-            int.TryParse(Console.ReadLine(), out int EmployeeChoice);
-
-            switch (EmployeeChoice)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    break;
-            }
+            int.TryParse(Console.ReadLine(), out int employeeChoice);
+            Console.Clear();
+            List<Employee> employeeList = employeeRepo.GetAll();
+            Employee employee = employeeList.ElementAt(--employeeChoice);
+            //Console.WriteLine($"{employee.Name} <- den bedste i virksomheden");
         }
     }
 }
