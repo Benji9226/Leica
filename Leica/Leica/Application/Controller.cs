@@ -81,9 +81,17 @@ namespace Leica.Application
         {
             int.TryParse(Console.ReadLine(), out int employeeChoice);
             Console.Clear();
+
+            CheckList checkList = new CheckList();
+
             List<Employee> employeeList = employeeRepo.GetAll();
             Employee employee = employeeList.ElementAt(--employeeChoice);
-            //Console.WriteLine($"{employee.Name} <- den bedste i virksomheden");
+
+            checkList.Show();
+
+            int.TryParse(Console.ReadLine(), out int input);
+            employee.ChangeCheckList(input);
+            checkList.Show();
         }
     }
 }
