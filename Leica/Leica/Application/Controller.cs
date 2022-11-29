@@ -79,6 +79,7 @@ namespace Leica.Application
         }
         public void EmployeeChoice()
         {
+            bool systemCheck = true;
             int.TryParse(Console.ReadLine(), out int employeeChoice);
             Console.Clear();
 
@@ -88,10 +89,16 @@ namespace Leica.Application
             Employee employee = employeeList.ElementAt(--employeeChoice);
 
             checkList.Show();
+            while(systemCheck)
+            {
+                int.TryParse(Console.ReadLine(), out int input);
+                checkList.ChangeCheckList(input);
+                checkList.Show();
+                
 
-            int.TryParse(Console.ReadLine(), out int input);
-            employee.ChangeCheckList(input);
-            checkList.Show();
+                if (input == 0) { systemCheck = false; }
+
+            }
         }
     }
 }

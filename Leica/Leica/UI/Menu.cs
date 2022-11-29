@@ -35,22 +35,6 @@ namespace Leica.UI
 
             controller.EmployeeChoice();
 
-            ShowChecklist();
-        }
-
-        public void ShowChecklist()
-        {
-            Console.Clear();
-            Console.WriteLine("Activities: ");
-            Console.WriteLine();
-            Console.WriteLine("1. [DONE] Base data created") ;
-            Console.WriteLine("2. [NOT DONE] HM registered of IT equipment");
-            Console.WriteLine("3. [DONE] Order is created");
-            Console.WriteLine("4. [NOT DONE] Onboarding Plan (Miro) finalised");
-            Console.WriteLine("5. [DONE] Data to mail template");
-            Console.WriteLine("6. [Done] Sent intro email");
-            Console.WriteLine("Choose an activity to change status: ");
-            int.TryParse(Console.ReadLine(), out int choice);
         }
     }
 }

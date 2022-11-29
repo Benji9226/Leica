@@ -30,7 +30,6 @@ namespace Leica
             Menu menu = new Menu();
             menu.MainMenu();
 
-            Console.ReadLine();
         }
     }
 }
