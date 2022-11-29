@@ -20,21 +20,23 @@ namespace Leica.UI
 
             if(controller.Login())
             {
-                HRMenu();
+                    HRMenu();
             }
         }
 
         public void HRMenu()
         {
-            Console.Clear();
-            Console.WriteLine("LIST OF ONBOARDEES:");
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------------------------------");
+                Console.Clear();
+                Console.WriteLine("LIST OF ONBOARDEES:");
+                Console.WriteLine();
+                Console.WriteLine("---------------------------------------------------------");
 
-            controller.EmployeeList();
+                controller.EmployeeList();
 
-            controller.EmployeeChoice();
+                controller.EmployeeChoice();
+            
 
         }
+
     }
 }

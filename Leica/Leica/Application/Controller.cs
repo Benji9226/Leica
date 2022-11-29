@@ -84,6 +84,7 @@ namespace Leica.Application
             Console.Clear();
 
             CheckList checkList = new CheckList();
+            Menu menu = new Menu();
 
             List<Employee> employeeList = employeeRepo.GetAll();
             Employee employee = employeeList.ElementAt(--employeeChoice);
@@ -96,7 +97,7 @@ namespace Leica.Application
                 checkList.Show();
                 
 
-                if (input == 0) { systemCheck = false; }
+                if (input == 0) { menu.HRMenu(); }
 
             }
         }
