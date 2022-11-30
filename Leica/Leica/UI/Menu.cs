@@ -12,7 +12,7 @@ namespace Leica.UI
     {
         Controller controller = new Controller();
 
-        public void LoginMenu()
+        void LoginMenu()
         {
             Console.WriteLine("LEICA ONBOARDING SYSTEM");
             Console.WriteLine("1. LOGIN");
@@ -47,6 +47,17 @@ namespace Leica.UI
                 }
             }
 
+            void MainMenu()
+            {
+                Console.Clear();
+                Console.WriteLine("MAIN MENU");
+                Console.WriteLine("1. Show employee list.");
+                Console.WriteLine("2. Create new employee.");
+                Console.WriteLine("0. EXIT");
+                Console.WriteLine();
+                Console.Write("Choose an option: ");
+            }
+
             bool HRMenu()
             {
                 Console.Clear();
@@ -75,17 +86,6 @@ namespace Leica.UI
                 Console.Write("EMPLOYEE PHONE NUMBER: ");
                 int phoneNumber = int.Parse(Console.ReadLine());
                 controller.CreateEmployee(name, email, phoneNumber);
-            }
-
-            void MainMenu()
-            {
-                Console.Clear();
-                Console.WriteLine("MAIN MENU");
-                Console.WriteLine("1. Show employee list.");
-                Console.WriteLine("2. Create new employee.");
-                Console.WriteLine("0. EXIT");
-                Console.WriteLine();
-                Console.Write("Choose an option: ");
             }
         }
     }
