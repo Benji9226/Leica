@@ -71,34 +71,43 @@ namespace Leica.Application
             List<Employee> employeeList = employeeRepo.GetAll();
             int employeeCount = 1;
 
-            foreach(Employee e in employeeList)
+            foreach (Employee e in employeeList)
             {
                 Console.WriteLine($"{employeeCount}:  {e.Name}   ~   {e.Email}");
                 employeeCount++;
             }
         }
-        public void EmployeeChoice()
+        public bool EmployeeChoice()
         {
             bool systemCheck = true;
             int.TryParse(Console.ReadLine(), out int employeeChoice);
             Console.Clear();
 
-            CheckList checkList = new CheckList();
-
             List<Employee> employeeList = employeeRepo.GetAll();
-            Employee employee = employeeList.ElementAt(--employeeChoice);
-
-            checkList.Show();
-            while(systemCheck)
+            Employee employee = new Employee(null, null, -1);
+            while (employeeChoice > 0)
             {
-                int.TryParse(Console.ReadLine(), out int input);
-                checkList.ChangeCheckList(input);
-                checkList.Show();
-                
-
-                if (input == 0) { systemCheck = false; }
-
+                employee = employeeList.ElementAt(--employeeChoice);
             }
+
+            while (systemCheck)
+            {
+                Console.WriteLine("EMPLOYEE: " + employee.Name);
+                employee.checklist.Show();
+                int.TryParse(Console.ReadLine(), out int input);
+                employee.checklist.ChangeCheckList(input);
+                Console.Clear();
+                Console.WriteLine("Enter 0 to exit");
+                if (input == 0) { systemCheck = false; }
+            }
+
+            return systemCheck;
+        }
+
+        public void CreateEmployee(string name, string email, int phoneNumber)
+        {
+            employeeRepo.Add(name, email, phoneNumber);
+            employeeRepo.AddEmployeesToFile();
         }
     }
 }

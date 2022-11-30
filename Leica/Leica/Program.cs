@@ -19,7 +19,7 @@ namespace Leica
             EmployeeRepo employeeRepo = new EmployeeRepo();
             employeeRepo.InitializeRepository();
             Menu menu = new Menu();
-            menu.MainMenu();
+            menu.LoginMenu();
         }
     }
 }

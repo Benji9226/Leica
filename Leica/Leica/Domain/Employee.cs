@@ -8,11 +8,10 @@ namespace Leica.Domain
 {
     public class Employee
     {
-        CheckList checkList = new CheckList();
-
         public string Name { get; set; }
         public string Email { get; set; }
         public int PhoneNumber { get; set; }
+        public CheckList checklist { get; set; } = new CheckList();
 
         public Employee(string name, string email, int phoneNumber)
         {
@@ -21,7 +20,6 @@ namespace Leica.Domain
             PhoneNumber = phoneNumber;
         }
 
-       
         public override string ToString()
         {
             return Name + ";" + Email + ";" + PhoneNumber;

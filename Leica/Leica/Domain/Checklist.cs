@@ -23,7 +23,6 @@ namespace Leica.Domain
         string changeCheckListText6 = "";
 
 
-
         public CheckList()
         {
             Q1 = false;
@@ -36,7 +35,6 @@ namespace Leica.Domain
 
         public void Show()
         {
-            Console.Clear();
             ChangeCheckListText();
             Console.WriteLine($"1: {changeCheckListText1} ~ Base data created? ");
             Console.WriteLine($"2: {changeCheckListText2} ~ HM registered of IT equipment? ");

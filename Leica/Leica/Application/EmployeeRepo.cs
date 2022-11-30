@@ -49,6 +49,10 @@ namespace Leica.Application
             {
                 result = new Employee(name, email, phoneNumber);
                 employeeList.Add(result);
+                using (StreamWriter fileWriter = new StreamWriter("Employee.txt"))
+                {
+                        fileWriter.WriteLine(result.ToString());
+                }
             }
             else
                 throw (new ArgumentException("Not all arguments are valid."));
