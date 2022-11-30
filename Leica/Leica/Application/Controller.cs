@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Leica.Application
 {
-    internal class Controller
+    public class Controller
     {
         EmployeeRepo employeeRepo = new EmployeeRepo();
+        ChecklistRepo checklistRepo = new ChecklistRepo();
 
         public bool Login()
         {
@@ -71,36 +72,42 @@ namespace Leica.Application
                 employeeCount++;
             }
         }
-        public bool EmployeeChoice()
+        public void EmployeeChoice(int employeeChoice)
         {
-            int.TryParse(Console.ReadLine(), out int employeeChoice);
             Console.Clear();
+            List<Checklist> checklistList = checklistRepo.GetAll();
 
-            List<Employee> employeeList = employeeRepo.GetAll();
-            Employee employee;
-            bool systemCheck = true;
-
-            if (employeeChoice > 0)
+            int input;
+            do
             {
-                employee = employeeList.ElementAt(--employeeChoice);
+                Checklist tempChecklist = checklistList.ElementAt(employeeChoice);
+                tempChecklist.Show();
+                input = int.Parse(Console.ReadLine());
+                tempChecklist.ChangeCheckList(input);
+                lineChanger(tempChecklist.ToString(), "Checklists.txt", employeeChoice);
+                Console.Clear();
 
-                while (systemCheck)
-                {
-                    Console.WriteLine("EMPLOYEE: " + employee.Name);
-                    employee.checklist.Show();
-                    int.TryParse(Console.ReadLine(), out int input);
-                    employee.checklist.ChangeCheckList(input);
-                    if (input == 0) { systemCheck = false; }
-                    Console.Clear();
-                }
-            }
-            return false;
+            } while (input != 0);
+
         }
 
         public void CreateEmployee(string name, string email, int phoneNumber)
         {
             employeeRepo.Add(name, email, phoneNumber);
             employeeRepo.AddEmployeesToFile();
+        }
+
+        public void CreateChecklist()
+        {
+            checklistRepo.Add();
+            checklistRepo.AddChecklistsToFile();
+        }
+
+        static void lineChanger(string newText, string fileName, int line_to_edit)
+        {
+            string[] arrLine = File.ReadAllLines(fileName);
+            arrLine[line_to_edit] = newText;
+            File.WriteAllLines(fileName, arrLine);
         }
     }
 }

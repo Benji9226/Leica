@@ -11,7 +11,6 @@ namespace Leica.Domain
         public string Name { get; set; }
         public string Email { get; set; }
         public int PhoneNumber { get; set; }
-        public CheckList checklist { get; set; } = new CheckList();
 
         public Employee(string name, string email, int phoneNumber)
         {

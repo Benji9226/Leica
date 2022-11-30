@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Leica.Domain
 {
-    public class CheckList
+    public class Checklist
     {
         public bool Q1 { get; set; }
         public bool Q2 { get; set; }
@@ -15,33 +16,33 @@ namespace Leica.Domain
         public bool Q5 { get; set; }
         public bool Q6 { get; set; }
 
-        string changeCheckListText1 = "";
-        string changeCheckListText2 = "";
-        string changeCheckListText3 = "";
-        string changeCheckListText4 = "";
-        string changeCheckListText5 = "";
-        string changeCheckListText6 = "";
+        string changeChecklistText1 = "";
+        string changeChecklistText2 = "";
+        string changeChecklistText3 = "";
+        string changeChecklistText4 = "";
+        string changeChecklistText5 = "";
+        string changeChecklistText6 = "";
 
 
-        public CheckList()
+        public Checklist(bool q1, bool q2, bool q3, bool q4, bool q5, bool q6)
         {
-            Q1 = false;
-            Q2 = false;
-            Q3 = false;
-            Q4 = false;
-            Q5 = false;
-            Q6 = false;
+            Q1 = q1;
+            Q2 = q2;
+            Q3 = q3;
+            Q4 = q4;
+            Q5 = q5;
+            Q6 = q6;
         }
 
         public void Show()
         {
             ChangeCheckListText();
-            Console.WriteLine($"1: {changeCheckListText1} ~ Base data created? ");
-            Console.WriteLine($"2: {changeCheckListText2} ~ HM registered of IT equipment? ");
-            Console.WriteLine($"3: {changeCheckListText3} ~ Order is created? ");
-            Console.WriteLine($"4: {changeCheckListText4} ~ Onboarding Plan (Miro) finalised? ");
-            Console.WriteLine($"5: {changeCheckListText5} ~ Data to mail template? ");
-            Console.WriteLine($"6: {changeCheckListText6} ~ Sent intro email? ");
+            Console.WriteLine($"1: {changeChecklistText1} ~ Base data created? ");
+            Console.WriteLine($"2: {changeChecklistText2} ~ HM registered of IT equipment? ");
+            Console.WriteLine($"3: {changeChecklistText3} ~ Order is created? ");
+            Console.WriteLine($"4: {changeChecklistText4} ~ Onboarding Plan (Miro) finalised? ");
+            Console.WriteLine($"5: {changeChecklistText5} ~ Data to mail template? ");
+            Console.WriteLine($"6: {changeChecklistText6} ~ Sent intro email? ");
             Console.WriteLine($"0: EXIT");
             Console.Write("\nSELECT ACTIVITY TO CHANGE: ");
         }
@@ -58,14 +59,16 @@ namespace Leica.Domain
 
         public void ChangeCheckListText()
         {
-            if (Q1 == true) { changeCheckListText1 = "DONE"; } else { changeCheckListText1 = "NOT DONE"; }
-            if (Q2 == true) { changeCheckListText2 = "DONE"; } else { changeCheckListText2 = "NOT DONE"; }
-            if (Q3 == true) { changeCheckListText3 = "DONE"; } else { changeCheckListText3 = "NOT DONE"; }
-            if (Q4 == true) { changeCheckListText4 = "DONE"; } else { changeCheckListText4 = "NOT DONE"; }
-            if (Q5 == true) { changeCheckListText5 = "DONE"; } else { changeCheckListText5 = "NOT DONE"; }
-            if (Q6 == true) { changeCheckListText6 = "DONE"; } else { changeCheckListText6 = "NOT DONE"; }
-
-
+            if (Q1 == true) { changeChecklistText1 = "DONE"; } else { changeChecklistText1 = "NOT DONE"; }
+            if (Q2 == true) { changeChecklistText2 = "DONE"; } else { changeChecklistText2 = "NOT DONE"; }
+            if (Q3 == true) { changeChecklistText3 = "DONE"; } else { changeChecklistText3 = "NOT DONE"; }
+            if (Q4 == true) { changeChecklistText4 = "DONE"; } else { changeChecklistText4 = "NOT DONE"; }
+            if (Q5 == true) { changeChecklistText5 = "DONE"; } else { changeChecklistText5 = "NOT DONE"; }
+            if (Q6 == true) { changeChecklistText6 = "DONE"; } else { changeChecklistText6 = "NOT DONE"; }
+        }
+        public override string ToString()
+        {
+            return $"{Q1};{Q2};{Q3};{Q4};{Q5};{Q6}";
         }
 
     }
