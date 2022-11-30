@@ -20,20 +20,25 @@ namespace Leica.Application
         {
             try
             {
-                using (StreamReader sr = new StreamReader("Leaders.txt"))
+                if (File.Exists("Leaders.txt"))
                 {
-                    String line = sr.ReadLine();
-
-                    while (line != null)
+                    using (StreamReader sr = new StreamReader("Leaders.txt"))
                     {
-                        string[] parts = line.Split(';');
+                        String line = sr.ReadLine();
 
-                        Leader tempLeader = new Leader(parts[0], parts[1], int.Parse(parts[2]));
-                        leaderList.Add(tempLeader);
+                        while (line != null)
+                        {
+                            string[] parts = line.Split(';');
 
-                        line = sr.ReadLine();
+                            Leader tempLeader = new Leader(parts[0], parts[1], int.Parse(parts[2]));
+                            leaderList.Add(tempLeader);
+
+                            line = sr.ReadLine();
+                        }
                     }
                 }
+                else
+                    Console.WriteLine("Leaders.txt does not exists");
             }
             catch (IOException)
             {

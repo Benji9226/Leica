@@ -14,83 +14,77 @@ namespace Leica.UI
 
         public void LoginMenu()
         {
-            Console.WriteLine("Leica menu");
-            Console.WriteLine("1. Login");
-            Console.WriteLine("2. exit");
+            Console.WriteLine("LEICA ONBOARDING SYSTEM");
+            Console.WriteLine("1. LOGIN");
+            Console.WriteLine("0. EXIT");
 
             if (controller.Login())
             {
-                int menu = -1;
-                while (menu != 0)
+                while (true)
                 {
                     MainMenu();
                     int.TryParse(Console.ReadLine(), out int menuChoice);
 
-                    while (menuChoice != 0)
+                    switch (menuChoice)
                     {
-                        if (menuChoice == 1)
-                        {
-                            HRMenu();
-                        }
-
-                        else if (menuChoice == 2)
-                        {
-                            Console.Write("Employee name: ");
-                            string name = Console.ReadLine();
-                            Console.Write("Employee email: ");
-                            string email = Console.ReadLine();
-                            Console.Write("Employee phoneNumber: ");
-                            int phoneNumber = int.Parse(Console.ReadLine());
-                            controller.CreateEmployee(name, email, phoneNumber);
-                        }
-
-                        menuChoice = 0;
-
-                        //switch (menuChoice)
-                        //{
-                        //    case 1:
-                        //        {
-                        //            HRMenu();
-
-                        //        }
-                        //        break;
-                        //    case 2:
-                        //        Console.Write("Employee name: ");
-                        //        string name = Console.ReadLine();
-                        //        Console.Write("Employee email: ");
-                        //        string email = Console.ReadLine();
-                        //        Console.Write("Employee phoneNumber: ");
-                        //        int phoneNumber = int.Parse(Console.ReadLine());
-                        //        controller.CreateEmployee(name, email, phoneNumber);
-                        //        break;
-                        //    default:
-                        //        menuChoice = 0;
-                        //        break;
-                        //}
+                        case 1:
+                            bool repeat = true;
+                            while (repeat)
+                            {
+                                if (HRMenu() == false)
+                                {
+                                    repeat = false;
+                                }
+                            }
+                            break;
+                        case 2:
+                            EmployeeCreationMenu();
+                            break;
+                        case 0:
+                            Environment.Exit(0);
+                            break;
                     }
                 }
             }
 
-            void HRMenu()
+            bool HRMenu()
             {
-                    Console.Clear();
-                    Console.WriteLine("LIST OF ONBOARDEES:");
-                    Console.WriteLine();
-                    Console.WriteLine("---------------------------------------------------------");
+                Console.Clear();
+                Console.WriteLine("LIST OF ONBOARDEES:");
+                Console.WriteLine();
+                Console.WriteLine("---------------------------------------------------------");
+                controller.EmployeeList();
+                Console.WriteLine("0: EXIT");
 
-               
-                    controller.EmployeeList();
-                controller.EmployeeChoice();
+                if (controller.EmployeeChoice() == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            void EmployeeCreationMenu()
+            {
+                Console.Clear();
+                Console.Write("EMPLOYEE NAME: ");
+                string name = Console.ReadLine();
+                
+                Console.Write("EMPLOYEE EMAIL: ");
+                string email = Console.ReadLine();
+                
+                Console.Write("EMPLOYEE PHONE NUMBER: ");
+                int phoneNumber = int.Parse(Console.ReadLine());
+                controller.CreateEmployee(name, email, phoneNumber);
             }
 
             void MainMenu()
             {
                 Console.Clear();
                 Console.WriteLine("MAIN MENU");
-                Console.WriteLine("");
                 Console.WriteLine("1. Show employee list.");
                 Console.WriteLine("2. Create new employee.");
                 Console.WriteLine("0. EXIT");
+                Console.WriteLine();
                 Console.Write("Choose an option: ");
             }
         }

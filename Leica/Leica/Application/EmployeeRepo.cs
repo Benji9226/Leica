@@ -20,18 +20,22 @@ namespace Leica.Application
         {
             try
             {
-                using (StreamReader sr = new StreamReader("Employee.txt"))
+                if (File.Exists("Employees.txt"))
                 {
-                    string line = sr.ReadLine();
 
-                    while (line != null)
+                    using (StreamReader sr = new StreamReader("Employees.txt"))
                     {
-                        string[] parts = line.Split(';');
+                        string line = sr.ReadLine();
 
-                        Employee tempEmployee = new Employee(parts[0], parts[1], int.Parse(parts[2]));
-                        employeeList.Add(tempEmployee);
+                        while (line != null)
+                        {
+                            string[] parts = line.Split(';');
 
-                        line = sr.ReadLine();
+                            Employee tempEmployee = new Employee(parts[0], parts[1], int.Parse(parts[2]));
+                            employeeList.Add(tempEmployee);
+
+                            line = sr.ReadLine();
+                        }
                     }
                 }
             }
@@ -49,7 +53,7 @@ namespace Leica.Application
             {
                 result = new Employee(name, email, phoneNumber);
                 employeeList.Add(result);
-                using (StreamWriter fileWriter = new StreamWriter("Employee.txt"))
+                using (StreamWriter fileWriter = new StreamWriter("Employees.txt"))
                 {
                         fileWriter.WriteLine(result.ToString());
                 }
@@ -66,7 +70,7 @@ namespace Leica.Application
 
         public void AddEmployeesToFile()
         {
-            using (StreamWriter fileWriter = new StreamWriter("Employee.txt"))
+            using (StreamWriter fileWriter = new StreamWriter("Employees.txt"))
             {
                 foreach (Employee employee in employeeList)
                 {

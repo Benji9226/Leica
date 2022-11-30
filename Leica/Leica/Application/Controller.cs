@@ -15,8 +15,6 @@ namespace Leica.Application
 
         public bool Login()
         {
-            Menu menu = new Menu();
-
             int.TryParse(Console.ReadLine(), out int choice);
             Console.Clear();
             switch (choice)
@@ -25,9 +23,9 @@ namespace Leica.Application
                     bool login = false;
                     while (login == false)
                     {
-                        Console.Write("Enter Email: ");
+                        Console.Write("ENTER EMAIL: ");
                         string emailInput = Console.ReadLine();
-                        Console.Write("\nEnter Password: ");
+                        Console.Write("ENTER PASSWORD: ");
                         int.TryParse(Console.ReadLine(), out int passwordInput);
                         login = LoginCheck(emailInput, passwordInput);
 
@@ -36,17 +34,13 @@ namespace Leica.Application
                             return true;
                         }
 
-                        Console.WriteLine("Wrong email or password, try again:");
+                        Console.WriteLine("Wrong email or password, try again...");
                         Console.ReadLine();
                         Console.Clear();
                     }
                     break;
                 case 2:
-                    Console.WriteLine("Have a good day! :-) (press enter to shut down)");
-                    Console.ReadLine();
                     Environment.Exit(0);
-                    break;
-                default:
                     break;
             }
             return false;
@@ -73,35 +67,34 @@ namespace Leica.Application
 
             foreach (Employee e in employeeList)
             {
-                Console.WriteLine($"{employeeCount}:  {e.Name}   ~   {e.Email}");
+                Console.WriteLine($"{employeeCount}: {e.Name}   ~   {e.Email}");
                 employeeCount++;
             }
         }
         public bool EmployeeChoice()
         {
-            bool systemCheck = true;
             int.TryParse(Console.ReadLine(), out int employeeChoice);
             Console.Clear();
 
             List<Employee> employeeList = employeeRepo.GetAll();
-            Employee employee = new Employee(null, null, -1);
-            while (employeeChoice > 0)
+            Employee employee;
+            bool systemCheck = true;
+
+            if (employeeChoice > 0)
             {
                 employee = employeeList.ElementAt(--employeeChoice);
-            }
 
-            while (systemCheck)
-            {
-                Console.WriteLine("EMPLOYEE: " + employee.Name);
-                employee.checklist.Show();
-                int.TryParse(Console.ReadLine(), out int input);
-                employee.checklist.ChangeCheckList(input);
-                Console.Clear();
-                Console.WriteLine("Enter 0 to exit");
-                if (input == 0) { systemCheck = false; }
+                while (systemCheck)
+                {
+                    Console.WriteLine("EMPLOYEE: " + employee.Name);
+                    employee.checklist.Show();
+                    int.TryParse(Console.ReadLine(), out int input);
+                    employee.checklist.ChangeCheckList(input);
+                    if (input == 0) { systemCheck = false; }
+                    Console.Clear();
+                }
             }
-
-            return systemCheck;
+            return false;
         }
 
         public void CreateEmployee(string name, string email, int phoneNumber)

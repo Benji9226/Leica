@@ -42,7 +42,8 @@ namespace Leica.Domain
             Console.WriteLine($"4: {changeCheckListText4} ~ Onboarding Plan (Miro) finalised? ");
             Console.WriteLine($"5: {changeCheckListText5} ~ Data to mail template? ");
             Console.WriteLine($"6: {changeCheckListText6} ~ Sent intro email? ");
-            Console.Write("Enter activity number to change status: ");
+            Console.WriteLine($"0: EXIT");
+            Console.Write("\nSELECT ACTIVITY TO CHANGE: ");
         }
 
         public void ChangeCheckList(int checkListInput)
