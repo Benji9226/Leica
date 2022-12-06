@@ -12,7 +12,7 @@ namespace Leica.UI
     {
         Controller controller = new Controller();
 
-        void LoginMenu()
+        public void LoginMenu()
         {
             Console.WriteLine("LEICA ONBOARDING SYSTEM");
             Console.WriteLine("1. LOGIN");
