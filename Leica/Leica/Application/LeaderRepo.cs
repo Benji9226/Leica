@@ -46,20 +46,6 @@ namespace Leica.Application
             }
         }
 
-        public Leader Add(string name, string email, int password)
-        {
-            Leader result = null;
-
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email))
-            {
-                result = new Leader(name, email, password);
-                leaderList.Add(result);
-            }
-            else
-                throw (new ArgumentException("Not all arguments are valid."));
-            return result;
-        }
-
         public List<Leader> GetAll()
         {
             return leaderList;

@@ -47,8 +47,8 @@ namespace Leica.Application
 
         public void Add(string name, string email, int phoneNumber)
         {
-            Employee result = new Employee(name, email, phoneNumber);
-            employeeList.Add(result);
+            Employee employee = new Employee(name, email, phoneNumber);
+            employeeList.Add(employee);
         }
 
         public List<Employee> GetAll()
