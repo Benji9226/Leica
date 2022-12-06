@@ -46,53 +46,53 @@ namespace Leica.UI
                     }
                 }
             }
+        }
 
-            void MainMenu()
+        public void MainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("MAIN MENU");
+            Console.WriteLine("1. Show employee list.");
+            Console.WriteLine("2. Create new employee.");
+            Console.WriteLine("0. EXIT");
+            Console.WriteLine();
+            Console.Write("Choose an option: ");
+        }
+
+        public bool HRMenu()
+        {
+            while (true)
             {
                 Console.Clear();
-                Console.WriteLine("MAIN MENU");
-                Console.WriteLine("1. Show employee list.");
-                Console.WriteLine("2. Create new employee.");
-                Console.WriteLine("0. EXIT");
+                Console.WriteLine("LIST OF ONBOARDEES:");
                 Console.WriteLine();
-                Console.Write("Choose an option: ");
-            }
-
-            bool HRMenu()
-            {
-                while (true)
+                Console.WriteLine("---------------------------------------------------------");
+                controller.EmployeeList();
+                Console.WriteLine("0: EXIT");
+                int selection = int.Parse(Console.ReadLine());
+                if (selection > 0)
                 {
-                    Console.Clear();
-                    Console.WriteLine("LIST OF ONBOARDEES:");
-                    Console.WriteLine();
-                    Console.WriteLine("---------------------------------------------------------");
-                    controller.EmployeeList();
-                    Console.WriteLine("0: EXIT");
-                    int selection = int.Parse(Console.ReadLine());
-                    if (selection > 0)
-                    {
-                        controller.EmployeeChoice(selection - 1);
-                    }
-                    else
-                        return false;
+                    controller.EmployeeChoice(selection - 1);
                 }
-                return true;
+                else
+                    return false;
             }
+            return true;
+        }
 
-            void EmployeeCreationMenu()
-            {
-                Console.Clear();
-                Console.Write("EMPLOYEE NAME: ");
-                string name = Console.ReadLine();
-                
-                Console.Write("EMPLOYEE EMAIL: ");
-                string email = Console.ReadLine();
-                
-                Console.Write("EMPLOYEE PHONE NUMBER: ");
-                int phoneNumber = int.Parse(Console.ReadLine());
-                controller.CreateEmployee(name, email, phoneNumber);
-                controller.CreateChecklist();
-            }
+        public void EmployeeCreationMenu()
+        {
+            Console.Clear();
+            Console.Write("EMPLOYEE NAME: ");
+            string name = Console.ReadLine();
+
+            Console.Write("EMPLOYEE EMAIL: ");
+            string email = Console.ReadLine();
+
+            Console.Write("EMPLOYEE PHONE NUMBER: ");
+            int phoneNumber = int.Parse(Console.ReadLine());
+            controller.CreateEmployee(name, email, phoneNumber);
+            controller.CreateChecklist();
         }
     }
 }
