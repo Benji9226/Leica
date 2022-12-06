@@ -45,18 +45,10 @@ namespace Leica.Application
             }
         }
 
-        public Employee Add(string name, string email, int phoneNumber)
+        public void Add(string name, string email, int phoneNumber)
         {
-            Employee result = null;
-
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email))
-            {
-                result = new Employee(name, email, phoneNumber);
-                employeeList.Add(result);
-            }
-            else
-                throw (new ArgumentException("Not all arguments are valid."));
-            return result;
+            Employee result = new Employee(name, email, phoneNumber);
+            employeeList.Add(result);
         }
 
         public List<Employee> GetAll()

@@ -12,6 +12,7 @@ namespace Leica.UI
     {
         Controller controller = new Controller();
 
+        // This is the login menu
         public void LoginMenu()
         {
             Console.WriteLine("LEICA ONBOARDING SYSTEM");
@@ -46,7 +47,6 @@ namespace Leica.UI
                     }
                 }
             }
-<<<<<<< HEAD
         }
 
         public void MainMenu()
@@ -94,50 +94,6 @@ namespace Leica.UI
             int phoneNumber = int.Parse(Console.ReadLine());
             controller.CreateEmployee(name, email, phoneNumber);
             controller.CreateChecklist();
-=======
->>>>>>> a8bee2a5b3513249c91c00b3fc5a10d0791f47cd
         }
-
-        public void MainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("MAIN MENU");
-            Console.WriteLine("1. Show employee list.");
-            Console.WriteLine("2. Create new employee.");
-            Console.WriteLine("0. EXIT");
-            Console.WriteLine();
-            Console.Write("Choose an option: ");
-        }
-
-        public bool HRMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("LIST OF ONBOARDEES:");
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------------------------------");
-            controller.EmployeeList();
-            Console.WriteLine("0: EXIT");
-
-            if (controller.EmployeeChoice() == false)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public void EmployeeCreationMenu()
-        {
-            Console.Clear();
-            Console.Write("EMPLOYEE NAME: ");
-            string name = Console.ReadLine();
-
-            Console.Write("EMPLOYEE EMAIL: ");
-            string email = Console.ReadLine();
-
-            Console.Write("EMPLOYEE PHONE NUMBER: ");
-            int phoneNumber = int.Parse(Console.ReadLine());
-            controller.CreateEmployee(name, email, phoneNumber);
-        }
-
     }
 }
