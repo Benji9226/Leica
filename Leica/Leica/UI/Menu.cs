@@ -11,7 +11,6 @@ namespace Leica.UI
     public class Menu
     {
         Controller controller = new Controller();
-
         // This is the login menu
         public void LoginMenu()
         {

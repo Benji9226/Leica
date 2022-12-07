@@ -22,7 +22,6 @@ namespace Leica.Application
             {
                 if (File.Exists("Employees.txt"))
                 {
-
                     using (StreamReader sr = new StreamReader("Employees.txt"))
                     {
                         string line = sr.ReadLine();

@@ -45,11 +45,10 @@ namespace Leica.Application
             }
         }
 
-        public Checklist Add()
+        public void Add()
         {
             Checklist result = new Checklist(false, false, false, false, false, false);
             checklistList.Add(result);
-            return result;
         }
 
         public List<Checklist> GetAll()

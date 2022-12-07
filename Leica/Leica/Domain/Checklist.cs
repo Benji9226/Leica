@@ -49,6 +49,8 @@ namespace Leica.Domain
 
         public void ChangeCheckList(int checkListInput)
         {
+
+
             if (checkListInput == 1) { Q1 = !Q1; }
             if (checkListInput == 2) { Q2 = !Q2; }
             if (checkListInput == 3) { Q3 = !Q3; }
