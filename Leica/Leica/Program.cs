@@ -12,6 +12,10 @@ namespace Leica
             RunApp();
         }
 
+        /// <summary>
+        /// Runs the application by first initializing the repositories by loading the data from the .txt files.
+        /// Then calls the LoginMenu() which starts the user interaction.
+        /// </summary>
         static void RunApp()
         {
             LeaderRepo leaderRepo = new LeaderRepo();

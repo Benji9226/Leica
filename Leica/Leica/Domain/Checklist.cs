@@ -9,6 +9,7 @@ namespace Leica.Domain
 {
     public class Checklist
     {
+        // Properties of each question of the checklist
         public bool Q1 { get; set; }
         public bool Q2 { get; set; }
         public bool Q3 { get; set; }
@@ -16,6 +17,7 @@ namespace Leica.Domain
         public bool Q5 { get; set; }
         public bool Q6 { get; set; }
 
+        // string declarations for setting questions to text.
         string changeChecklistText1 = "";
         string changeChecklistText2 = "";
         string changeChecklistText3 = "";
@@ -23,17 +25,22 @@ namespace Leica.Domain
         string changeChecklistText5 = "";
         string changeChecklistText6 = "";
 
-
-        public Checklist(bool q1, bool q2, bool q3, bool q4, bool q5, bool q6)
+        /// <summary>
+        /// Constructor, all questions start with bool value false, when checklist is created.
+        /// </summary>
+        public Checklist()
         {
-            Q1 = q1;
-            Q2 = q2;
-            Q3 = q3;
-            Q4 = q4;
-            Q5 = q5;
-            Q6 = q6;
+            Q1 = false;
+            Q2 = false;
+            Q3 = false;
+            Q4 = false;
+            Q5 = false;
+            Q6 = false;
         }
 
+        /// <summary>
+        /// Prints the given checklist to console.
+        /// </summary>
         public void Show()
         {
             ChangeCheckListText();
@@ -47,10 +54,13 @@ namespace Leica.Domain
             Console.Write("\nSELECT ACTIVITY TO CHANGE: ");
         }
 
+        /// <summary>
+        /// If question is selected, negates the bool value of the question and sets it.
+        /// True becomes false, vise versa.
+        /// </summary>
+        /// <param name="checkListInput"></param>
         public void ChangeCheckList(int checkListInput)
         {
-
-
             if (checkListInput == 1) { Q1 = !Q1; }
             if (checkListInput == 2) { Q2 = !Q2; }
             if (checkListInput == 3) { Q3 = !Q3; }
@@ -59,6 +69,9 @@ namespace Leica.Domain
             if (checkListInput == 6) { Q6 = !Q6; }
         }
 
+        /// <summary>
+        /// Method which converts bool value to a text format "DONE" and "NOT DONE" for better user understanding.
+        /// </summary>
         public void ChangeCheckListText()
         {
             if (Q1 == true) { changeChecklistText1 = "DONE"; } else { changeChecklistText1 = "NOT DONE"; }
@@ -68,10 +81,15 @@ namespace Leica.Domain
             if (Q5 == true) { changeChecklistText5 = "DONE"; } else { changeChecklistText5 = "NOT DONE"; }
             if (Q6 == true) { changeChecklistText6 = "DONE"; } else { changeChecklistText6 = "NOT DONE"; }
         }
+
+        /// <summary>
+        /// ToString method that returns the questions for given checklist as a string.
+        /// Used for writing the checklist to a file.
+        /// </summary>
+        /// <returns>A string</returns>
         public override string ToString()
         {
             return $"{Q1};{Q2};{Q3};{Q4};{Q5};{Q6}";
         }
-
     }
 }

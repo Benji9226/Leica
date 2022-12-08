@@ -11,11 +11,18 @@ namespace Leica.Application
     {
         public List<Employee> employeeList = new List<Employee>();
 
+        /// <summary>
+        /// Repository constructor
+        /// </summary>
         public EmployeeRepo()
         {
             InitializeRepository();
         }
 
+        /// <summary>
+        /// Initilizes the repository from text file 'Employees.txt'.
+        /// </summary>
+        /// <exception cref="FileNotFoundException"></exception>
         public void InitializeRepository()
         {
             try
@@ -38,24 +45,46 @@ namespace Leica.Application
                     }
                 }
             }
-            catch (IOException)
+            catch (FileNotFoundException)
             {
-                throw;
+                throw new FileNotFoundException("Employees.txt does not exist.");
             }
         }
 
+        /// <summary>
+        /// Adds a new employee to the list based on the parameters.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="phoneNumber"></param>
         public void Add(string name, string email, int phoneNumber)
         {
             Employee employee = new Employee(name, email, phoneNumber);
             employeeList.Add(employee);
         }
 
+        /// <summary>
+        /// Removes an employee from the list at a given index.
+        /// </summary>
+        /// <param name="index"></param>
+        public void Remove(int index)
+        {
+            employeeList.RemoveAt(index);
+        }
+
+        /// <summary>
+        /// Returns a list of all employees.
+        /// </summary>
+        /// <returns></returns>
         public List<Employee> GetAll()
         {
             return employeeList;
         }
 
-        public void AddEmployeesToFile()
+        /// <summary>
+        /// Updates the text file 'Employees.txt' from the current active repository employeeList when called.
+        /// </summary>
+        public void UpdateEmployeesFile()
         {
             using (StreamWriter fileWriter = new StreamWriter("Employees.txt"))
             {
